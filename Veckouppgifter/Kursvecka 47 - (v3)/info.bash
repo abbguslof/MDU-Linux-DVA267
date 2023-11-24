@@ -23,17 +23,15 @@ if [ "$HELP" = true ]; then
 fi
 
 if [ "$VERSION" = true ]; then
-    echo "Linux version: $(uname -r)"
+    echo "Linux version: $(lsb_release -d | sed "s/Description:\t//")"
 fi
 
 if [ "$IP" = true ]; then
-    interface=$(ip route get 8.8.8.8 | awk -v N=5 '{print $N}')
-    arr=($(ip addr show $interface | grep "inet "))
-    echo "IP address: ${arr[1]}"
+    interface=$(ip route get 8.8.8.8 | head -1 | cut -d " " -f5)
+    echo "IP address: $(ip addr show $interface | grep -oP "inet \K[^ ]+")"
 fi
 
 if [ "$MAC" = true ]; then
-    interface=$(ip route get 8.8.8.8 | awk -v N=5 '{print $N}')
-    arr=($(ip addr show $interface | grep "link/ether"))
-    echo "Mac address(ether): ${arr[1]}"
+    interface=$(ip route get 8.8.8.8 | head -1 | cut -d " " -f5)
+    echo "MAC address(ether): $(ip addr show $interface | grep -oP "link/ether \K[^ ]+")"
 fi
