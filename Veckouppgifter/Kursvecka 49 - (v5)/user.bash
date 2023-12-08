@@ -24,5 +24,5 @@ if [ "$USERS" = true ]; then
 fi
 
 if [ "$ONLINE" = true ]; then
-    cut -d: -f1 /etc/passwd | column
+    who | awk '{print $1, $2, $3, $4, "(" $5 ")"}' | column -t
 fi
