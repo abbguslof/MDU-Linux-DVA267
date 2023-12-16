@@ -1,21 +1,30 @@
-## Fråga 1 | Skriv ett kommando för att visa manualsidan för `ls`.
-`man ls`
-Alternativa (ej rätt): `Info ls`, `ls --help`
+## Fråga 1 | Kan *Bob* ändra innehållet i filen ***schedule.txt***? Varför/varför inte?
 
-## Fråga 2 | Skriv ett kommando som printar ut värdet på miljövaribeln `PATH`.
-`Echo $PATH`
+Nej, gruppen *solarproj* har inga skrivrättigheter.
 
-## Fråga 3 | Är `alias` ett internt eller externt kommando?
-Internt kommando
+## Fråga 2 | Kan *Alice* ta bort filen ***controller.c***? Varför/varför inte?
 
-## Fråga 4 | I kommandot `ls -l -p --color=never /usr/bin`, vad är argumentet/argumenten? 
-`/usr/bin`
+Nej, Sticky bit är satt på katalogen *solarproj*.
 
-## Fråga 5 | I kommandot ls -l -p /usr/bin, vad är flaggan/flaggorna?
-`-l -p`
+## Fråga 3 | Vem kan läsa filen ***power***? Varför?
 
-## Fråga 6 | Skapa ett alias visa som printar värdet på variablerna PATH och HOME.
-ex: `alias echo_path_home='echo $PATH && echo $HOME'`
+Alla andra förutom ägare och medlemmar i gruppen *solarproj*.
 
-## Fråga 7 | Om du skriver in egr i terminalen och sedan trycker på TAB-tangenten, vilket kommando fylls då i?
-`egrep`
+## Fråga 4 | Varför kan *Alice* men inte *Bob* byta arbetskatalog till ***old***?
+
+*Alice* har exekveringsrättigheter på katalogen **old** men gruppen *solarproj* har inte exekveringsrättigheter.
+
+## Fråga 5 | Kan *Alice* läsa filen  ***temp.sym***? Varför/varför inte?
+
+Nej, *Alice* kan läsa länken men har inte läsrättigheter på filen **temp.**
+
+## Fråga 6 | *Alice* har installerat **openssh-server** på en dator för att låta *Bob* fjärransluta till datorn (Xubuntu/Ubuntu).
+
+Vilket kommando ska hon använda för att se status på tjänsten(‘service’) **ssh**?
+`systemctl status ssh`
+
+Hur kan tjänsten(‘service’) **ssh** stoppas?
+`sudo systemctl stop ssh`
+
+Hur kan tjänsten(‘service’) **ssh** startas?
+`sudo systemctl start ssh`
